@@ -18,13 +18,13 @@ class _JoystickPageState extends State<JoystickPage> {
   CommandDirection commandDirection = CommandDirection();
   final repository = StatusRepository();
   final controller = StatusController();
-  String url = '';
+  String url = 'https://jsonplaceholder.typicode.com/todos';
   final urlModel = UrlModel('');
 
   succes() {
     return GestureDetector(
       onTap: () {
-        controller.start();
+        controller.startConect();
       },
       child: StatusConect.conectado,
     );
@@ -33,22 +33,27 @@ class _JoystickPageState extends State<JoystickPage> {
   error() {
     return GestureDetector(
       onTap: () {
-        controller.start();
+        controller.startConect();
       },
       child: StatusConect.desconectado,
     );
   }
 
   loading() {
-    return SizedBox(
-      height: 20,
-      width: 20,
-      child: Padding(
-        padding: const EdgeInsets.all(3.0),
-        child: CircularProgressIndicator(
-          backgroundColor: Cores.azulClaro,
+    return Row(
+      children: [
+        SizedBox(
+          height: 20,
+          width: 20,
+          child: Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: CircularProgressIndicator(
+              backgroundColor: Cores.azulClaro,
+            ),
+          ),
         ),
-      ),
+        StatusConect.conectando,
+      ],
     );
   }
 
@@ -67,13 +72,14 @@ class _JoystickPageState extends State<JoystickPage> {
       case HomeState.error:
         return error();
       default:
+        return start();
     }
   }
 
   @override
   void initState() {
     super.initState();
-    controller.start();
+    controller.startConect();
   }
 
   @override
@@ -136,9 +142,14 @@ class _JoystickPageState extends State<JoystickPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'lib/app/views/assets/LOGO.png',
-                      scale: 1 / 1.9,
+                    GestureDetector(
+                      onTap: () {
+                            controller.startConect();
+                          },
+                      child: Image.asset(
+                        'lib/app/views/assets/LOGO.png',
+                        scale: 1 / 1.9,
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +157,7 @@ class _JoystickPageState extends State<JoystickPage> {
                         Text('Status da conexão:'),
                         GestureDetector(
                           onTap: () {
-                            start();
+                            controller.startConect();
                           },
                           child: Container(
                             child: AnimatedBuilder(
@@ -176,7 +187,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Girar para esquerda
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '?LD=1&RU=1'),
+                              onTap: () => urlModel.fetch('$url'),
                               child: Container(
                                 child: Transform.rotate(
                                   angle: 150,

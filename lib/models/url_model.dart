@@ -1,13 +1,16 @@
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
-
-class UrlModel{
+class UrlModel {
   final String url;
 
-  UrlModel(this.url); 
+  UrlModel(this.url);
 
   fetch(String url) async {
-    var link = Uri.parse(url);
-    var response = await http.get(link);
+      final response = await Dio().get(url);
+    try {
+      print(response.statusMessage);
+    } catch (e) {
+      print('Deu Erro');
+    }
   }
 }

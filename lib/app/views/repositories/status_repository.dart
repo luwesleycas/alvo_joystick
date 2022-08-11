@@ -1,23 +1,27 @@
+import 'dart:convert';
+
 import 'package:alvo_joystick/models/status_model.dart';
 import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 
 class StatusRepository {
   final dio = Dio();
-  final url = 'http://localhost:3031/status';
+  final url = Uri.parse('http://localhost:8888/api_json.php');
 
   Future<List<StatusModel>> fetchStatus() async {
-    final response = await dio.get(url);
-    final list = response.data;
-    print(list);
-    return list;
+    final response = await http.get(url);
+    Map<String, dynamic> json = jsonDecode(response.body);
+    final status = json['status'];
+    print(status);
+    return status;
   }
 
-  // Future<bool> sCode() async {
-  //   final response = await dio.get(url);
-  //   bool status = false;
-  //   if (response.statusCode == 200) {
-  //     status = false;
-  //   }
-  //   return status;
-  // }
+  Future<bool> isConected() async {
+    final response = await http.get(url);
+    var isConect = false;
+    if (response.statusCode == 200) {
+      isConect = true;
+    }
+    return isConect;
+  }
 }

@@ -3,10 +3,9 @@ import 'package:alvo_joystick/models/status_model.dart';
 import 'package:flutter/material.dart';
 
 class StatusController {
-  List<StatusModel> status = [];
+  late bool status;
   final StatusRepository _repository;
   final state = ValueNotifier<HomeState>(HomeState.start);
-  late Future<bool> scode;
 
   StatusController([StatusRepository? repository])
       : _repository = repository ?? StatusRepository();
@@ -14,13 +13,23 @@ class StatusController {
   Future start() async {
     state.value = HomeState.loading;
     try {
-      status = await _repository.fetchStatus();
+      _repository.fetchStatus();
       state.value = HomeState.succes;
     } catch (e) {
       state.value = HomeState.error;
     }
   }
 
+  Future startConect() async {
+    state.value = HomeState.error;
+    status = await _repository.isConected();
+    print(status);
+    if (status == true) {
+      state.value = HomeState.succes;
+    } else if(status == false) {
+      state.value = HomeState.error;
+    }
+  }
 }
 
 enum HomeState { start, loading, succes, error }
