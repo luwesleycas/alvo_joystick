@@ -1,5 +1,6 @@
 import 'package:alvo_joystick/app/views/about_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'app/views/config_page.dart';
 import 'app/views/help_page.dart';
 import 'app/views/joystick_page.dart';
@@ -14,18 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.grey
-        ,
+        primarySwatch: Colors.grey,
       ),
       routes: <String, WidgetBuilder>{
-        '/':(context) => JoystickPage(),
-        '/config':(context) => ConfigPage(),
-        '/about':(context) => AboutPage(),
-        '/help':(context) => Helppage(),
+        '/': (context) => JoystickPage(),
+        '/config': (context) => ConfigPage(),
+        '/about': (context) => AboutPage(),
+        '/help': (context) => Helppage(),
       },
     );
   }

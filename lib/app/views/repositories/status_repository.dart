@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class StatusRepository {
   final dio = Dio();
-  final url = Uri.parse('http://localhost:8888/api_json.php');
+  final url = Uri.parse('http://192.168.0.200');
 
   Future<List<StatusModel>> fetchStatus() async {
     final response = await http.get(url);

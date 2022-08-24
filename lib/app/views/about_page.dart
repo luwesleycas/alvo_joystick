@@ -19,13 +19,18 @@ class _AboutPageState extends State<AboutPage> {
       backgroundColor: Cores.azulClaro,
     ),
     body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
           child: Column(
             children: [
-              Text('Alvo ShotHub'),
-              Text('versão 1.1.2'),
+              ListTile(
+                title: Text('Versão do app'),
+                subtitle: Text('1.2.1'),
+              ),
+              ListTile(
+                title: Text('Endereço IP do dispositivo'),
+                subtitle: Text('192.168.0.200'),
+              ),
             ],
           ),
         )

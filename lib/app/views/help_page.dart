@@ -24,12 +24,19 @@ class _HelppageState extends State<Helppage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
               Text(
-                  'Para conectar com o alvo, conecte na rede na rede "Alvo ShotHub"'),
+                '1. Para se comunicar com o alvo, conecte-se na rede Wifi "Alvo ShotHub"',
+              ),
               Icon(
                 Icons.wifi_rounded,
                 size: 50,
               ),
               Text('Alvo ShotHub'),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: Text(
+                  '2. Volte a tela de início e clique no ícone para atualizar o status de conexão',
+                ),
+              ),
             ],
           ),
         ),

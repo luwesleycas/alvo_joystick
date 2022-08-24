@@ -3,6 +3,7 @@ import 'package:alvo_joystick/models/status_model.dart';
 import 'package:flutter/material.dart';
 
 class StatusController {
+  late var conect;
   late bool status;
   final StatusRepository _repository;
   final state = ValueNotifier<HomeState>(HomeState.start);
@@ -11,11 +12,11 @@ class StatusController {
       : _repository = repository ?? StatusRepository();
 
   Future start() async {
+    conect = await _repository.fetchStatus();
     state.value = HomeState.loading;
-    try {
-      _repository.fetchStatus();
+    if (conect == 'conected') {
       state.value = HomeState.succes;
-    } catch (e) {
+    } else {
       state.value = HomeState.error;
     }
   }
@@ -26,7 +27,7 @@ class StatusController {
     print(status);
     if (status == true) {
       state.value = HomeState.succes;
-    } else if(status == false) {
+    } else if (status == false) {
       state.value = HomeState.error;
     }
   }

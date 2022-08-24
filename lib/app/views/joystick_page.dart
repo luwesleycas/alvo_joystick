@@ -18,7 +18,7 @@ class _JoystickPageState extends State<JoystickPage> {
   CommandDirection commandDirection = CommandDirection();
   final repository = StatusRepository();
   final controller = StatusController();
-  String url = 'https://jsonplaceholder.typicode.com/todos';
+  String url = 'http://192.168.0.200';
   final urlModel = UrlModel('');
 
   succes() {
@@ -86,6 +86,7 @@ class _JoystickPageState extends State<JoystickPage> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Color(0xFFFFFFFF),
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: Cores.azulEscuro,
           title: Text(
             'Alvo ShotHub',
@@ -95,6 +96,7 @@ class _JoystickPageState extends State<JoystickPage> {
           ),
         ),
         drawer: Drawer(
+          backgroundColor: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
@@ -144,11 +146,11 @@ class _JoystickPageState extends State<JoystickPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                            controller.startConect();
-                          },
+                        controller.startConect();
+                      },
                       child: Image.asset(
                         'lib/app/views/assets/LOGO.png',
-                        scale: 1 / 1.9,
+                        scale: 3,
                       ),
                     ),
                     Row(
@@ -187,7 +189,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Girar para esquerda
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url'),
+                              onTap: () => urlModel.fetch('$url' '?LD=1&RU=1'),
                               child: Container(
                                 child: Transform.rotate(
                                   angle: 150,
