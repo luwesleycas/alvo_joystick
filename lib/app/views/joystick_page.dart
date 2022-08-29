@@ -18,7 +18,7 @@ class _JoystickPageState extends State<JoystickPage> {
   CommandDirection commandDirection = CommandDirection();
   final repository = StatusRepository();
   final controller = StatusController();
-  String url = 'http://192.168.0.200';
+  String url = 'http://192.168.4.1';
   final urlModel = UrlModel('');
 
   succes() {
@@ -150,7 +150,7 @@ class _JoystickPageState extends State<JoystickPage> {
                       },
                       child: Image.asset(
                         'lib/app/views/assets/LOGO.png',
-                        scale: 3,
+                        scale: 1.9,
                       ),
                     ),
                     Row(
@@ -189,7 +189,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Girar para esquerda
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '?LD=1&RU=1'),
+                              onTap: () => urlModel.fetch('$url' '/A'),
                               child: Container(
                                 child: Transform.rotate(
                                   angle: 150,
@@ -212,7 +212,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Pra frente
-                              onTap: () => urlModel.fetch('$url' '?LU=1&RU=1'),
+                              onTap: () => urlModel.fetch('$url' '/B'),
                               child: Container(
                                 width: arrowSize,
                                 height: arrowSize,
@@ -232,7 +232,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Diagonal direita
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '?LU=1&RD=1'),
+                              onTap: () => urlModel.fetch('$url' '/C'),
                               child: Container(
                                 child: Transform.rotate(
                                   angle: -150,
@@ -263,7 +263,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             //Esquerda
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '?LS=1&RU=1'),
+                              onTap: () => urlModel.fetch('$url' '/D'),
                               child: Container(
                                 child: Icon(
                                   Icons.arrow_circle_left_outlined,
@@ -283,7 +283,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Parar
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '?LS=1&RS=1'),
+                              onTap: () => urlModel.fetch('$url' '/E'),
                               child: Container(
                                 child: Icon(
                                   Icons.stop_circle_outlined,
@@ -303,7 +303,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Direita
-                              onTap: () => urlModel.fetch('$url' '?LU=1&RS=1'),
+                              onTap: () => urlModel.fetch('$url' '/F'),
                               child: Container(
                                 child: Icon(
                                   Icons.arrow_circle_right_outlined,
@@ -331,7 +331,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Esquivar
-                              onTap: () => urlModel.fetch('$url' '?ES=1'),
+                              onTap: () => urlModel.fetch('$url' '/G'),
                               child: Container(
                                 // ignore: sort_child_properties_last
                                 child: Transform.rotate(
@@ -355,7 +355,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Para trás
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '?LD=1&RD=1'),
+                              onTap: () => urlModel.fetch('$url' '/H'),
                               child: Container(
                                 child: Icon(
                                   Icons.arrow_circle_down,
@@ -375,9 +375,7 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Aleatório
-                              onTap: () {
-                                final check = '';
-                              },
+                              onTap: () => urlModel.fetch('$url' '/I'),
                               child: Container(
                                 // ignore: sort_child_properties_last
                                 child: Center(
