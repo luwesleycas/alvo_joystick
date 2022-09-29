@@ -31,3 +31,13 @@ class StatusConect {
   );
 
 }
+
+class AddresIp {
+  static final url = 'http://192.168.4.1';
+  static final ip = '192.168.4.1';
+}
+
+class Version {
+  static final update = '1.3.0';
+}
+

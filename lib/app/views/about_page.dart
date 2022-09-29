@@ -25,11 +25,11 @@ class _AboutPageState extends State<AboutPage> {
             children: [
               ListTile(
                 title: Text('Versão do app'),
-                subtitle: Text('1.2.1'),
+                subtitle: Text(Version.update),
               ),
               ListTile(
                 title: Text('Endereço IP do dispositivo'),
-                subtitle: Text('192.168.0.200'),
+                subtitle: Text(AddresIp.ip),
               ),
             ],
           ),

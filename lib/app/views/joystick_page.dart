@@ -18,7 +18,6 @@ class _JoystickPageState extends State<JoystickPage> {
   CommandDirection commandDirection = CommandDirection();
   final repository = StatusRepository();
   final controller = StatusController();
-  String url = 'http://192.168.4.1';
   final urlModel = UrlModel('');
 
   succes() {
@@ -189,7 +188,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Girar para esquerda
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '/A'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/A');
+                                controller.startConect();
+                              },
                               child: Container(
                                 child: Transform.rotate(
                                   angle: 150,
@@ -212,7 +214,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Pra frente
-                              onTap: () => urlModel.fetch('$url' '/B'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/B');
+                                controller.startConect();
+                              },
                               child: Container(
                                 width: arrowSize,
                                 height: arrowSize,
@@ -232,7 +237,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Diagonal direita
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '/C'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/C');
+                                controller.startConect();
+                              },
                               child: Container(
                                 child: Transform.rotate(
                                   angle: -150,
@@ -263,7 +271,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             //Esquerda
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '/D'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/D');
+                                controller.startConect();
+                              },
                               child: Container(
                                 child: Icon(
                                   Icons.arrow_circle_left_outlined,
@@ -283,7 +294,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Parar
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '/E'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/E');
+                                controller.startConect();
+                              },
                               child: Container(
                                 child: Icon(
                                   Icons.stop_circle_outlined,
@@ -303,7 +317,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Direita
-                              onTap: () => urlModel.fetch('$url' '/F'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/F');
+                                controller.startConect();
+                              },
                               child: Container(
                                 child: Icon(
                                   Icons.arrow_circle_right_outlined,
@@ -331,7 +348,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Esquivar
-                              onTap: () => urlModel.fetch('$url' '/G'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/G');
+                                controller.startConect();
+                              },
                               child: Container(
                                 // ignore: sort_child_properties_last
                                 child: Transform.rotate(
@@ -355,7 +375,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             //Para trás
                             child: GestureDetector(
-                              onTap: () => urlModel.fetch('$url' '/H'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/H');
+                                controller.startConect();
+                              },
                               child: Container(
                                 child: Icon(
                                   Icons.arrow_circle_down,
@@ -375,7 +398,10 @@ class _JoystickPageState extends State<JoystickPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               //Aleatório
-                              onTap: () => urlModel.fetch('$url' '/I'),
+                              onTap: () {
+                                urlModel.fetch(AddresIp.url + '/I');
+                                 controller.startConect();
+                              },
                               child: Container(
                                 // ignore: sort_child_properties_last
                                 child: Center(

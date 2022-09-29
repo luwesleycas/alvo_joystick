@@ -47,6 +47,7 @@ flutter_native_splash:
   image: "lib/app/views/assets/app/splash.png"
   andriod: true
   ios: true
+  
 
 flutter_icons:
   image_path: "lib/app/views/assets/app/icon.png"
